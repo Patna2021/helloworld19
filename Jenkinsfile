@@ -27,6 +27,5 @@ stage('deploy'){
         docker.build registry + ":$BUILD_NUMBER"
       }
     }
- }
+  }
 }
- 
