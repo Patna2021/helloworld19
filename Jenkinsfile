@@ -3,13 +3,16 @@ agent any
   tools {
   maven 'M2_HOME'
   }
+  environment {
+  registry = "patna2021y/devop-pipeline"
+  registryCredential = 'dockerUserID'
+  }
   stages {
     stage('build'){
       steps {
       sh 'mvn clean'
       sh 'mvn install'
       sh 'mvn package'
-        sleep 10
       }
     }
   stage('test'){
@@ -20,14 +23,11 @@ agent any
     }
 stage('deploy'){
       steps {
-      echo "deploy step"
-        sleep 10
+        script {
+        docker.build registry + ":$BUILD_NUMBER"
       }
     }
-stage('docker'){
-      steps {
-      echo "image step"
-        sleep 10
+
       }
     }
   }
