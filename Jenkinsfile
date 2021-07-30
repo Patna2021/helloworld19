@@ -4,7 +4,7 @@ agent any
   maven 'M2_HOME'
   }
  environment {
-   registry = "patna2021y/devop-pipeline"
+   registry = "Patna2021/devop-pipeline"
    registryCredential = 'dockerUserID'
   }
   stages {
